@@ -67,7 +67,7 @@ class InstanceControllerWindows extends InstanceController {
       if (msg is SendPort) {
         msg.send(pipe);
       } else {
-        channel.invokeMethod(onSecondInstanceMethodName, msg);
+        msgHandler?.call(msg);
       }
     };
     final reader = ReceivePort()..listen(listenFn);
